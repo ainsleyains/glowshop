@@ -1,11 +1,21 @@
 import { useParams, Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../components/Rating';
-import products from '../products';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { FaArrowLeft } from 'react-icons/fa';
 
 export default function ProductPage() {
+    const [product, setProduct] = useState({});
     const { id: productId } = useParams();
-    const product = products.find((el) => el._id === productId);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const { data } = await axios.get(`/api/products/${productId}`);
+            setProduct(data);
+        };
+        fetchData();
+    }, [productId]);
 
     return (
         <>
@@ -13,7 +23,7 @@ export default function ProductPage() {
                 className='btn btn-light my-3'
                 to='/'
             >
-                &#x2190; Back
+                <FaArrowLeft /> Back
             </Link>
             <Row>
                 <Col md={6}>
