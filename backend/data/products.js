@@ -1,6 +1,5 @@
 const products = [
     {
-        _id: '1',
         name: 'Diamond Circle Necklace ',
         image: '/images/diamond-circle-necklace.png',
         description:
@@ -13,7 +12,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: '2',
         name: 'Diamond Drop Earrings',
         image: '/images/diamond-drop-earrings.png',
         description:
@@ -26,7 +24,6 @@ const products = [
         numReviews: 8,
     },
     {
-        _id: '3',
         name: 'Diamond Necklace',
         image: '/images/diamond-pendant-necklace.png',
         description:
@@ -39,7 +36,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: '4',
         name: 'Diamond Band Ring',
         image: '/images/diamond-ring.png',
         description:
@@ -52,7 +48,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: '5',
         name: 'Diamond Drop Earrings',
         image: '/images/drop-earrings.png',
         description:
@@ -65,7 +60,6 @@ const products = [
         numReviews: 10,
     },
     {
-        _id: '6',
         name: 'Link Bracelet in Yellow Gold',
         image: '/images/link-bracelet.png',
         description:
@@ -78,7 +72,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: '7',
         name: 'Link Earrings in Yellow Gold',
         image: '/images/link-earrings.png',
         description:
@@ -91,7 +84,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: '8',
         name: 'Link Ring in 18k Gold',
         image: '/images/link-ring.png',
         description:
@@ -104,7 +96,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: '9',
         name: 'Lock Earrings in 18K Gold',
         image: '/images/lock-earrings.png',
         description:
@@ -117,7 +108,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: '10',
         name: 'Rope Ring in 18K Gold',
         image: '/images/rope-ring.png',
         description:
