@@ -79,7 +79,7 @@ const products = [
 
         collection: 'Picasso',
         price: 5450,
-        countInStock: 0,
+        countInStock: 3,
         rating: 4,
         numReviews: 12,
     },
@@ -91,7 +91,7 @@ const products = [
 
         collection: 'Picasso',
         price: 4470,
-        countInStock: 0,
+        countInStock: 6,
         rating: 4,
         numReviews: 12,
     },
@@ -115,7 +115,7 @@ const products = [
 
         collection: 'Picasso',
         price: 4400,
-        countInStock: 0,
+        countInStock: 2,
         rating: 4,
         numReviews: 12,
     },
