@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap';
 import { FaTrash, FaAngleLeft } from 'react-icons/fa';
 import Message from '../components/Message';
-import { addToCart } from '../slices/cartSlice';
+import { addToCart, removeFromCart } from '../slices/cartSlice';
 
 export default function Cart() {
     const navigate = useNavigate();
@@ -14,6 +14,11 @@ export default function Cart() {
     const addToCartHandler = async (product, qty) => {
         dispatch(addToCart({ ...product, qty }));
     };
+
+    const removeFromCartHandler = async (id) => {
+        dispatch(removeFromCart(id));
+    };
+
     return (
         <>
             {cartItems.length > 0 && (
@@ -82,6 +87,7 @@ export default function Cart() {
                                             <Button
                                                 type='button'
                                                 variant='light'
+                                                onClick={() => removeFromCartHandler(item._id)}
                                             >
                                                 <FaTrash />
                                             </Button>
@@ -93,28 +99,32 @@ export default function Cart() {
                     )}
                 </Col>
                 <Col md={4}>
-                    <Card>
-                        <ListGroup variant='flush'>
-                            <ListGroup.Item>
-                                <h4>Order Summary</h4>
-                                <h6>
-                                    Subtotal $
-                                    {cartItems
-                                        .reduce((acc, item) => acc + item.qty * item.price, 0)
-                                        .toLocaleString(undefined, { maximumFractionDigits: 2 })}
-                                </h6>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Button
-                                    type='button'
-                                    className='btn-block'
-                                    disabled={cartItems.length === 0}
-                                >
-                                    Checkout
-                                </Button>
-                            </ListGroup.Item>
-                        </ListGroup>
-                    </Card>
+                    {cartItems.length > 0 && (
+                        <Card>
+                            <ListGroup variant='flush'>
+                                <ListGroup.Item>
+                                    <h4>Order Summary</h4>
+                                    <h6>
+                                        Subtotal $
+                                        {cartItems
+                                            .reduce((acc, item) => acc + item.qty * item.price, 0)
+                                            .toLocaleString(undefined, {
+                                                maximumFractionDigits: 2,
+                                            })}
+                                    </h6>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Button
+                                        type='button'
+                                        className='btn-block'
+                                        disabled={cartItems.length === 0}
+                                    >
+                                        Checkout
+                                    </Button>
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    )}
                 </Col>
             </Row>
         </>
