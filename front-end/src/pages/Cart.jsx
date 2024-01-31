@@ -19,6 +19,9 @@ export default function Cart() {
         dispatch(removeFromCart(id));
     };
 
+    const checkoutHandler = () => {
+        navigate('/login?redirect=/shipping');
+    };
     return (
         <>
             {cartItems.length > 0 && (
@@ -118,6 +121,7 @@ export default function Cart() {
                                         type='button'
                                         className='btn-block'
                                         disabled={cartItems.length === 0}
+                                        onClick={checkoutHandler}
                                     >
                                         Checkout
                                     </Button>
