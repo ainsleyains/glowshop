@@ -1,8 +1,11 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useSelector } from 'react-redux';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import logo from '../assets/glow.png';
 export default function Header() {
+    const { cartItems } = useSelector((state) => state.cart);
+
     return (
         <header className=''>
             <Navbar
@@ -28,6 +31,15 @@ export default function Header() {
                             <LinkContainer to='/cart'>
                                 <Nav.Link>
                                     <FaShoppingCart size={25} />
+                                    {cartItems.length > 0 && (
+                                        <Badge
+                                            pill
+                                            bg='success'
+                                            style={{ marginLeft: '-5px' }}
+                                        >
+                                            {cartItems.reduce((acc, curr) => acc + curr.qty, 0)}
+                                        </Badge>
+                                    )}
                                 </Nav.Link>
                             </LinkContainer>
                             <LinkContainer to='/login'>

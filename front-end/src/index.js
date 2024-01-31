@@ -15,6 +15,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
+import Cart from './pages/Cart';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -30,6 +31,10 @@ const router = createBrowserRouter(
             <Route
                 path='/product/:id'
                 element={<ProductPage />}
+            />
+            <Route
+                path='/cart'
+                element={<Cart />}
             />
         </Route>
     )
