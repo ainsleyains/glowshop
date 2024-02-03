@@ -13,7 +13,7 @@ const loginUser = asyncHandler(async (req, res) => {
     if (user && (await user.matchPassword(password))) {
         generateToken(res, user._id);
 
-        res.status(200).json({
+        res.json({
             _id: user._id,
             name: user.name,
             email: user.email,
@@ -82,7 +82,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
         });
     } else {
         res.status(404);
-        throw new Error('USer not found');
+        throw new Error('User not found');
     }
 });
 

@@ -1,10 +1,15 @@
-import { Navbar, Nav, Container, Badge } from 'react-bootstrap';
+import { Navbar, Nav, Container, Badge, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector } from 'react-redux';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import logo from '../assets/glow.png';
 export default function Header() {
     const { cartItems } = useSelector((state) => state.cart);
+    const { userInfo } = useSelector((state) => state.auth);
+
+    const logoutHandler = () => {
+        console.log('logout');
+    };
 
     return (
         <header className=''>
@@ -42,11 +47,25 @@ export default function Header() {
                                     )}
                                 </Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to='/login'>
-                                <Nav.Link>
-                                    <FaUser size={25} />
-                                </Nav.Link>
-                            </LinkContainer>
+                            {userInfo ? (
+                                <NavDropdown
+                                    title={userInfo.name}
+                                    id='username'
+                                >
+                                    <LinkContainer to='/profile'>
+                                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                                    </LinkContainer>
+                                    <NavDropdown.Item onClick={logoutHandler}>
+                                        Logout
+                                    </NavDropdown.Item>
+                                </NavDropdown>
+                            ) : (
+                                <LinkContainer to='/login'>
+                                    <Nav.Link>
+                                        <FaUser size={25} />
+                                    </Nav.Link>
+                                </LinkContainer>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
