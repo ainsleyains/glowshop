@@ -13,6 +13,7 @@ import './assets/styles/bootstrap.custom.css';
 import './assets/styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import Cart from './pages/Cart';
@@ -47,10 +48,16 @@ const router = createBrowserRouter(
                 path='/register'
                 element={<Register />}
             />
+
             <Route
-                path='/shipping'
-                element={<Shipping />}
-            />
+                path=''
+                element={<PrivateRoute />}
+            >
+                <Route
+                    path='/shipping'
+                    element={<Shipping />}
+                />
+            </Route>
         </Route>
     )
 );
