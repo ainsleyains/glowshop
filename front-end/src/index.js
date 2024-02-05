@@ -18,6 +18,7 @@ import ProductPage from './pages/ProductPage';
 import Cart from './pages/Cart';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Shipping from './pages/Shipping';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -45,6 +46,10 @@ const router = createBrowserRouter(
             <Route
                 path='/register'
                 element={<Register />}
+            />
+            <Route
+                path='/shipping'
+                element={<Shipping />}
             />
         </Route>
     )
