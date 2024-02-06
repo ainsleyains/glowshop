@@ -33,7 +33,7 @@ export default function CheckoutSteps({ step1, step2, step3, step4 }) {
             </Nav.Item>
             <Nav.Item>
                 {step4 ? (
-                    <LinkContainer to='/placeorder'>
+                    <LinkContainer to='/review'>
                         <Nav.Link>Review</Nav.Link>
                     </LinkContainer>
                 ) : (
