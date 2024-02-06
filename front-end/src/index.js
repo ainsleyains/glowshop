@@ -21,6 +21,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Shipping from './pages/Shipping';
 import Payment from './pages/Payment';
+import Review from './pages/Review';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -61,6 +62,10 @@ const router = createBrowserRouter(
                 <Route
                     path='/payment'
                     element={<Payment />}
+                />
+                <Route
+                    path='/review'
+                    element={<Review />}
                 />
             </Route>
         </Route>
