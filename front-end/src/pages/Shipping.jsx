@@ -5,6 +5,7 @@ import FormContainer from '../components/FormContainer';
 import { FaAngleRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { saveShippingAddress } from '../slices/cartSlice';
+import CheckoutSteps from '../components/CheckoutSteps';
 
 export default function Shipping() {
     const cart = useSelector((state) => state.cart);
@@ -25,6 +26,10 @@ export default function Shipping() {
     };
     return (
         <FormContainer>
+            <CheckoutSteps
+                step1
+                step2
+            />
             <h3 className='my-3'>Add your delivery address</h3>
             <Form onSubmit={submitHandler}>
                 <Form.Group
