@@ -16,6 +16,12 @@ export default function Review() {
         }
     }, [cart.paymentMethod, cart.shippingAddress.address, navigate]);
 
+    const placeOrderHandler = async () => {
+        try {
+            console.log('clicked');
+        } catch (error) {}
+    };
+
     return (
         <>
             <CheckoutSteps
@@ -28,6 +34,15 @@ export default function Review() {
                 <Col md={8}>Column</Col>
                 <Col md={4}>Column</Col>
             </Row>
+
+            <Button
+                type='button'
+                className='btn-block'
+                disabled={cart.cartItems.length === 0}
+                onClick={placeOrderHandler}
+            >
+                Complete Purchase and Pay
+            </Button>
         </>
     );
 }

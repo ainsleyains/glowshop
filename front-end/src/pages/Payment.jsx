@@ -38,7 +38,7 @@ export default function Payment() {
             <h1>Payment Options</h1>
             <Form onSubmit={submitHandler}>
                 <Form.Group>
-                    {/* <Form.Label as='legend'>Payment Options</Form.Label> */}
+                    <Form.Label as='legend'>Express Checkout</Form.Label>
                     <Col>
                         <Form.Check
                             type='radio'
@@ -51,14 +51,15 @@ export default function Payment() {
                             onChange={(e) => setPaymentMethod(e.target.value)}
                         ></Form.Check>
                     </Col>
+                    <Form.Label as='legend'>Card Payment</Form.Label>
                     <Col>
                         <Form.Check
                             type='radio'
                             className='my-2'
-                            label='Credit Card'
-                            id='CreditCard'
+                            label='Glow Gift Card'
+                            id='GiftCard'
                             name='paymentMethod'
-                            value='CreditCard'
+                            value='GiftCard'
                             onChange={(e) => setPaymentMethod(e.target.value)}
                         ></Form.Check>
                     </Col>

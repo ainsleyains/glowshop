@@ -62,12 +62,7 @@ export default function ProductPage() {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Price:</Col>
-                                    <Col>
-                                        $
-                                        {product.price.toLocaleString(undefined, {
-                                            maximumFractionDigits: 2,
-                                        })}
-                                    </Col>
+                                    <Col>${product.price}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
