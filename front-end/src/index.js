@@ -22,6 +22,7 @@ import Register from './pages/Register';
 import Shipping from './pages/Shipping';
 import Payment from './pages/Payment';
 import Review from './pages/Review';
+import Order from './pages/Order';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -66,6 +67,10 @@ const router = createBrowserRouter(
                 <Route
                     path='/review'
                     element={<Review />}
+                />
+                <Route
+                    path='/order/:id'
+                    element={<Order />}
                 />
             </Route>
         </Route>

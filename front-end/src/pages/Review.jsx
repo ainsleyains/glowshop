@@ -32,7 +32,7 @@ export default function Review() {
                 paymentMethod: cart.paymentMethod,
                 itemsPrice: cart.itemsPrice,
                 shippingPrice: cart.shippingPrice,
-                taxPrice: cart.taxtPrice,
+                taxPrice: cart.taxPrice,
                 totalPrice: cart.totalPrice,
             }).unwrap();
             dispatch(clearCartItems());
