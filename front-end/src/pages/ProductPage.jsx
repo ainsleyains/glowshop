@@ -62,7 +62,10 @@ export default function ProductPage() {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Price:</Col>
-                                    <Col>${product.price}</Col>
+                                    {/* <Col>${product.price}</Col> */}
+                                    <Col>
+                                        ${new Intl.NumberFormat('en-US').format(product.price)}
+                                    </Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
