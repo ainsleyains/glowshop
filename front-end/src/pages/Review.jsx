@@ -25,9 +25,7 @@ export default function Review() {
     }, [cart.paymentMethod, cart.shippingAddress.address, navigate]);
 
     const placeOrderHandler = async () => {
-        try {
-            console.log('clicked');
-        } catch (error) {}
+        console.log('clicked');
     };
 
     return (
@@ -51,10 +49,9 @@ export default function Review() {
                             <p>
                                 <strong>Address </strong>
                                 {cart.shippingAddress.address}, {cart.shippingAddress.city},{' '}
-                                {cart.shippingAddress.country}, {cart.shippingAddress.postalCode},
+                                {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
                             </p>
                         </ListGroup.Item>
-
                         <ListGroup.Item>
                             <h5>Order Summary</h5>
                             {cart.cartItems.length === 0 ? (
@@ -72,27 +69,14 @@ export default function Review() {
                                                         rounded
                                                     />
                                                 </Col>
-                                                <Col md={4}>
+                                                <Col>
                                                     <Link to={`/products/${item.product}`}>
                                                         {item.name}
                                                     </Link>
                                                 </Col>
+                                                <Col md={2}>{item.price}</Col>
                                                 <Col md={1}>{item.qty}</Col>
-                                                <Col md={2}>
-                                                    $
-                                                    {item.price.toLocaleString(undefined, {
-                                                        maximumFractionDigits: 2,
-                                                    })}
-                                                </Col>
-                                                <Col md={1}>
-                                                    $
-                                                    {(item.qty * item.price).toLocaleString(
-                                                        undefined,
-                                                        {
-                                                            maximumFractionDigits: 2,
-                                                        }
-                                                    )}
-                                                </Col>
+                                                <Col md={1}>{item.price * item.qty}</Col>
                                             </Row>
                                         </ListGroup.Item>
                                     ))}
@@ -110,44 +94,29 @@ export default function Review() {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Subtotal</Col>
-                                    <Col>
-                                        {/* $
-                                        {cart.itemsPrice} */}
-                                        $ {new Intl.NumberFormat('en-US').format(cart.itemsPrice)}
-                                    </Col>
+                                    <Col>{cart.itemsPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
+
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Delivery</Col>
-                                    {/* <Col>${cart.shippingPrice}</Col> */}
-                                    <Col>
-                                        ${new Intl.NumberFormat('en-US').format(cart.shippingPrice)}
-                                    </Col>
+                                    <Col>Shipping</Col>
+                                    <Col>{cart.shippingPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
+
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Taxes</Col>
-                                    {/* <Col>
-                                        $
-                                        {cart.taxPrice}
-                                    </Col> */}
-                                    <Col>
-                                        $ {new Intl.NumberFormat('en-US').format(cart.taxPrice)}
-                                    </Col>
+                                    <Col>{cart.taxPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Total</Col>
-                                    {/* <Col>${cart.totalPrice}</Col> */}
-                                    <Col>
-                                        ${new Intl.NumberFormat('en-US').format(cart.totalPrice)}
-                                    </Col>
+                                    <Col>{cart.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
-
                             <ListGroup.Item>
                                 {error && <Message variant='danger'>{error.data.message}</Message>}
                             </ListGroup.Item>
