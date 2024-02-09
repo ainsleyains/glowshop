@@ -56,10 +56,10 @@ export default function Payment() {
                         <Form.Check
                             type='radio'
                             className='my-2'
-                            label='Glow Gift Card'
-                            id='GiftCard'
+                            label='Credit Card'
+                            id='CreditCard'
                             name='paymentMethod'
-                            value='GiftCard'
+                            value='CreditCard'
                             onChange={(e) => setPaymentMethod(e.target.value)}
                         ></Form.Check>
                     </Col>
