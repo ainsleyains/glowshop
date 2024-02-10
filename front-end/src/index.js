@@ -24,6 +24,7 @@ import Shipping from './pages/Shipping';
 import Payment from './pages/Payment';
 import Review from './pages/Review';
 import Order from './pages/Order';
+import Profile from './pages/Profile';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -72,6 +73,10 @@ const router = createBrowserRouter(
                 <Route
                     path='/order/:id'
                     element={<Order />}
+                />
+                <Route
+                    path='/profile'
+                    element={<Profile />}
                 />
             </Route>
         </Route>

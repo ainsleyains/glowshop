@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { toast } from 'react-toastify';
-import { UseSelector, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
@@ -50,11 +50,11 @@ export default function Order() {
         }
     }, [order, paypal, paypalDispatch, loadingPayPal, errorPayPal]);
 
-    async function onApproveTest() {
-        await payOrder({ orderId, details: { payer: {} } });
-        refetch();
-        toast.success('Payment successful');
-    }
+    // async function onApproveTest() {
+    //     await payOrder({ orderId, details: { payer: {} } });
+    //     refetch();
+    //     toast.success('Payment successful');
+    // }
 
     function onApprove(data, actions) {
         return actions.order.capture().then(async function (details) {
