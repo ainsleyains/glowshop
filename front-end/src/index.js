@@ -15,6 +15,7 @@ import './assets/styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import Cart from './pages/Cart';
@@ -25,6 +26,7 @@ import Payment from './pages/Payment';
 import Review from './pages/Review';
 import Order from './pages/Order';
 import Profile from './pages/Profile';
+import OrderList from './pages/admin/OrderList';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -77,6 +79,16 @@ const router = createBrowserRouter(
                 <Route
                     path='/profile'
                     element={<Profile />}
+                />
+            </Route>
+
+            <Route
+                path=''
+                element={<AdminRoute />}
+            >
+                <Route
+                    path='/admin/orderlist'
+                    element={<OrderList />}
                 />
             </Route>
         </Route>
