@@ -86,7 +86,7 @@ export default function Header() {
                                     title='Admin'
                                     id='adminmenu'
                                 >
-                                    <LinkContainer to='/admin/products'>
+                                    <LinkContainer to='/admin/productlist'>
                                         <NavDropdown.Item>Products</NavDropdown.Item>
                                     </LinkContainer>
 
