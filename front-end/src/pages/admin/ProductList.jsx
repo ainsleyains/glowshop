@@ -29,7 +29,7 @@ export default function ProductList() {
     return (
         <>
             <Row className='align-items-center'>
-                <Col>
+                <Col className='my-4'>
                     <h1>Products</h1>
                 </Col>
 
@@ -68,8 +68,8 @@ export default function ProductList() {
                             {products.map((product) => (
                                 <tr key={product._id}>
                                     <td>{product._id}</td>
-                                    <td>{product.name}</td>
-                                    <td>{product.price}</td>
+                                    <td className='text-start'>{product.name}</td>
+                                    <td>{new Intl.NumberFormat('en-US').format(product.price)}</td>
                                     <td>{product.collection}</td>
                                     <td className='text-start'>{product.description}</td>
                                     <td>
