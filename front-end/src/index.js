@@ -27,6 +27,7 @@ import Review from './pages/Review';
 import Order from './pages/Order';
 import Profile from './pages/Profile';
 import OrderList from './pages/admin/OrderList';
+import ProductList from './pages/admin/ProductList';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -89,6 +90,10 @@ const router = createBrowserRouter(
                 <Route
                     path='/admin/orderlist'
                     element={<OrderList />}
+                />
+                <Route
+                    path='/admin/productlist'
+                    element={<ProductList />}
                 />
             </Route>
         </Route>
