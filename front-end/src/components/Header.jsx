@@ -90,7 +90,7 @@ export default function Header() {
                                         <NavDropdown.Item>Products</NavDropdown.Item>
                                     </LinkContainer>
 
-                                    <LinkContainer to='/admin/users'>
+                                    <LinkContainer to='/admin/userlist'>
                                         <NavDropdown.Item>Users</NavDropdown.Item>
                                     </LinkContainer>
 
