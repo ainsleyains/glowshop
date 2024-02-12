@@ -12,15 +12,25 @@ export default function Product({ product }) {
                 />
             </Link>
 
-            {/* <Card.Body>
+            <Card.Body>
                 <a href={`/product/${product._id}`}>
-                    <Card.Title as='div' className='product-title'>{product.name}</Card.Title>
-                    <Card.Text as ='div>
-                        <Rating value={product.rating} text={`${product.numReviews}reviews`}/>
+                    <Card.Title
+                        as='div'
+                        className='product-title'
+                    >
+                        {product.name}
+                    </Card.Title>
+                    <Card.Text as='div'>
+                        {/* <Rating
+                            value={product.rating}
+                            text={`${product.numReviews}reviews`}
+                        /> */}
                     </Card.Text>
-                    <Card.Text as='h3'>${product.price}</Card.Text>
+                    <Card.Text as='h6'>
+                        $ {new Intl.NumberFormat('en-US').format(product.price)}
+                    </Card.Text>
                 </a>
-            </Card.Body> */}
+            </Card.Body>
         </Card>
     );
 }

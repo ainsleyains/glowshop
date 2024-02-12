@@ -30,6 +30,7 @@ import OrderList from './pages/admin/OrderList';
 import ProductList from './pages/admin/ProductList';
 import ProductEdit from './pages/admin/ProductEdit';
 import UserList from './pages/admin/UserList';
+import UserEdit from './pages/admin/UserEdit';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -106,6 +107,11 @@ const router = createBrowserRouter(
                 <Route
                     path='/admin/userlist'
                     element={<UserList />}
+                />
+
+                <Route
+                    path='/admin/user/:id/edit'
+                    element={<UserEdit />}
                 />
             </Route>
         </Route>
