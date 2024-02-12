@@ -3,17 +3,29 @@ import { Table, Button } from 'react-bootstrap';
 import { FaTimes, FaTrash, FaEdit, FaCheck } from 'react-icons/fa';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
-import { useGetUsersQuery } from '../../slices/usersApiSlice';
+import { toast } from 'react-toastify';
+import { useGetUsersQuery, useDeleteUserMutation } from '../../slices/usersApiSlice';
 
 export default function UserList() {
     const { data: users, refetch, isLoading, error } = useGetUsersQuery();
 
-    const deleteHandler = (id) => {
-        console.log('delete');
+    const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
+
+    const deleteHandler = async (id) => {
+        if (window.confirm('Are you sure ?')) {
+            try {
+                await deleteUser(id);
+                refetch();
+                toast.success('User Deleted!');
+            } catch (error) {
+                toast.error(error?.data?.message || error.error);
+            }
+        }
     };
     return (
         <>
             <h1>Users</h1>
+            {loadingDelete && <Loader />}
             {isLoading ? (
                 <Loader />
             ) : error ? (
@@ -51,28 +63,24 @@ export default function UserList() {
                                     )}
                                 </td>
                                 <td>
-                                    {!user.isAdmin && (
-                                        <>
-                                            <LinkContainer
-                                                to={`/admin/user/${user._id}/edit`}
-                                                style={{ marginRight: '10px' }}
-                                            >
-                                                <Button
-                                                    variant='light'
-                                                    className='btn-sm'
-                                                >
-                                                    <FaEdit />
-                                                </Button>
-                                            </LinkContainer>
-                                            <Button
-                                                variant='danger'
-                                                className='btn-sm'
-                                                onClick={() => deleteHandler(user._id)}
-                                            >
-                                                <FaTrash style={{ color: 'white' }} />
-                                            </Button>
-                                        </>
-                                    )}
+                                    <LinkContainer
+                                        to={`/admin/user/${user._id}/edit`}
+                                        style={{ marginRight: '10px' }}
+                                    >
+                                        <Button
+                                            variant='light'
+                                            className='btn-sm'
+                                        >
+                                            <FaEdit />
+                                        </Button>
+                                    </LinkContainer>
+                                    <Button
+                                        variant='danger'
+                                        className='btn-sm'
+                                        onClick={() => deleteHandler(user._id)}
+                                    >
+                                        <FaTrash style={{ color: 'white' }} />
+                                    </Button>
                                 </td>
                             </tr>
                         ))}
