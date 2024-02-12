@@ -43,6 +43,12 @@ const router = createBrowserRouter(
                 path='/'
                 element={<Home />}
             />
+
+            <Route
+                path='/page/:pageNumber'
+                element={<Home />}
+            />
+
             <Route
                 path='/product/:id'
                 element={<ProductPage />}
