@@ -6,6 +6,7 @@ import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import logo from '../assets/glow.png';
+import SearchBox from './SearchBox';
 
 export default function Header() {
     const { cartItems } = useSelector((state) => state.cart);
@@ -48,6 +49,7 @@ export default function Header() {
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>
                         <Nav className='ms-auto'>
+                            <SearchBox />
                             <LinkContainer to='/cart'>
                                 <Nav.Link>
                                     <FaShoppingCart size={25} />

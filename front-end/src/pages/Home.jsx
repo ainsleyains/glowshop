@@ -1,10 +1,12 @@
 import { Row, Col } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Product from '../components/Product';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Paginate from '../components/Paginate';
+import { FaArrowLeft } from 'react-icons/fa';
+import HeaderCarousel from '../components/HeaderCarousel';
 
 export default function Home() {
     const { pageNumber, keyword } = useParams();
@@ -12,6 +14,16 @@ export default function Home() {
 
     return (
         <>
+            {!keyword ? (
+                <HeaderCarousel />
+            ) : (
+                <Link
+                    to='/'
+                    className='btn btn-light my-4'
+                >
+                    <FaArrowLeft /> Back
+                </Link>
+            )}
             {isLoading ? (
                 <Loader />
             ) : error ? (
