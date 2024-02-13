@@ -104,6 +104,10 @@ const router = createBrowserRouter(
                     path='/admin/productlist'
                     element={<ProductList />}
                 />
+                <Route
+                    path='/admin/productlist/:pageNumber'
+                    element={<ProductList />}
+                />
 
                 <Route
                     path='/admin/product/:id/edit'
