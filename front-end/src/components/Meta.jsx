@@ -17,8 +17,8 @@ export default function Meta({ title, description, keywords }) {
 }
 
 Meta.defaultGlow = {
-    title: 'Welcome to Glow Jewelry Shop',
+    title: 'Welcome to Glow Jewellry Shop',
     description:
-        'Explore classic and modern jewelry at Glow Jewelry. Find the perfect gift with our range of diamond engagement rings, 18K gold jewellery, earrings, and bracelets.',
-    keywords: 'diamond, 18K, gold, jewelry, rings, earrings, bracelets, necklaces',
+        'Explore classic and modern jewellry at Glow Jewelry. Find the perfect gift with our range of diamond engagement rings, 18K gold jewellery, earrings, and bracelets.',
+    keywords: 'diamond, 18K, gold, jewellry, rings, earrings, bracelets, necklaces',
 };
