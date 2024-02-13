@@ -9,6 +9,7 @@ import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/pr
 import { addToCart } from '../slices/cartSlice';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import Meta from '../components/Meta';
 
 export default function ProductPage() {
     const [qty, setQty] = useState(1);
@@ -63,6 +64,7 @@ export default function ProductPage() {
                 <Message variant='danger'>{error?.data.message || error.error}</Message>
             ) : (
                 <>
+                    <Meta title={product.name} />
                     <Row>
                         <Col md={6}>
                             <Image

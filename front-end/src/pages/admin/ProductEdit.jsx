@@ -58,6 +58,7 @@ export default function ProductEdit() {
             toast.error(result.error);
         } else {
             toast.success('Product updated');
+            refetch();
             navigate('/admin/productlist');
         }
     };
@@ -132,7 +133,7 @@ export default function ProductEdit() {
                                 onChange={uploadFileHandler}
                             ></Form.Control>
                         </Form.Group>
-
+                        {loadingUpload && <Loader />}
                         <Form.Group
                             controlId='collection'
                             className='mb-3'
