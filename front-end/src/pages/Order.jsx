@@ -103,7 +103,7 @@ export default function Order() {
     return isLoading ? (
         <Loader />
     ) : error ? (
-        <Message variant='danger' />
+        <Message variant='danger'>{error?.data?.message || error.error}</Message>
     ) : (
         <>
             <h1 className='mt-4'>Order {order._id}</h1>
