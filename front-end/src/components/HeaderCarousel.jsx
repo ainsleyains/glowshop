@@ -6,7 +6,7 @@ import { useGetTopProductsQuery } from '../slices/productsApiSlice';
 
 export default function HeaderCarousel() {
     const { data: products, isLoading, error } = useGetTopProductsQuery();
-    console.log(products);
+
     return isLoading ? (
         <Loader />
     ) : error ? (
