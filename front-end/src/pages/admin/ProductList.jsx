@@ -65,7 +65,7 @@ export default function ProductList() {
             {isLoading ? (
                 <Loader />
             ) : error ? (
-                <Message variant='danger'>{error}</Message>
+                <Message variant='danger'>{error.data.message}</Message>
             ) : (
                 <>
                     <Table
