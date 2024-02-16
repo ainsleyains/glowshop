@@ -8,22 +8,35 @@ import { verifyPayPalPayment, checkIfNewTransaction } from '../utils/paypal.js';
 //@route POST /api/orders
 //@access Private
 const addOrderItems = asyncHandler(async (req, res) => {
-    const {
-        orderItems,
-        shippingAddress,
-        paymentMethod,
-        itemsPrice,
-        taxPrice,
-        shippingPrice,
-        totalPrice,
-    } = req.body;
+    const { orderItems, shippingAddress, paymentMethod } = req.body;
 
     if (orderItems && orderItems.length === 0) {
         res.status(400);
         throw new Error('No order items');
     } else {
+        // get the ordered items from our database
+        const itemsFromDB = await Product.find({
+            _id: { $in: orderItems.map((x) => x._id) },
+        });
+
+        // map over the order items and use the price from our items from database
+        const dbOrderItems = orderItems.map((itemFromClient) => {
+            const matchingItemFromDB = itemsFromDB.find(
+                (itemFromDB) => itemFromDB._id.toString() === itemFromClient._id
+            );
+            return {
+                ...itemFromClient,
+                product: itemFromClient._id,
+                price: matchingItemFromDB.price,
+                _id: undefined,
+            };
+        });
+
+        // calculate prices
+        const { itemsPrice, taxPrice, shippingPrice, totalPrice } = calcPrices(dbOrderItems);
+
         const order = new Order({
-            orderItems: orderItems.map((item) => ({ ...item, product: item._id, _id: undefined })),
+            orderItems: dbOrderItems,
             user: req.user._id,
             shippingAddress,
             paymentMethod,
@@ -34,6 +47,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
         });
 
         const createdOrder = await order.save();
+
         res.status(201).json(createdOrder);
     }
 });
